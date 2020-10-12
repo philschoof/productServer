@@ -31,7 +31,11 @@ app.get('/products', (req, res, next) => {
   .then(products => {
       res.status(200).send(products);
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    console.log(err)
+    const error = err || 'An Error Occured';
+    return next(error)
+  })
 });
 
 app.post('/products', validationMiddleware.validateProductName, validationMiddleware.validateAttrTypes, (req, res, next) => {
@@ -47,8 +51,11 @@ app.post('/products', validationMiddleware.validateProductName, validationMiddle
   .then(product => {
     res.status(200).send(product)
   })
-  .catch(err => console.log(err))
-
+  .catch(err => {
+    console.log(err)
+    const error = err || 'An Error Occured';
+    return next(error)
+  })
 });
 
 server.listen(port, () => {
