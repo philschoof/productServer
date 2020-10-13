@@ -16,10 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Product_Attribute',
   },{
     indexes: [
-        {
-            unique: true,
-            fields: ['productId', 'attributeId']
-        }
+      {
+          unique: true,
+          fields: ['productId', 'attributeId']
+      }
     ]
 });
   return Product_Attribute;
